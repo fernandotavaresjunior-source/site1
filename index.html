@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aventura</title>
+  <style>
+    .etapa { display: none; }
+    .etapa.ativa { display: block; }
+  </style>
+</head>
+<body>
+
+  <div id="etapa1" class="etapa ativa">
+    <p>Início da aventura.</p>
+    <button data-proximo="etapa2">Ir para etapa 2</button>
+  </div>
+
+  <div id="etapa2" class="etapa">
+    <p>Segunda etapa da aventura.</p>
+    <button data-proximo="etapa1">Voltar para etapa 1</button>
+  </div>
+
+  <script>
+    document.querySelectorAll('button').forEach(btn => {
+      btn.onclick = () => {
+        const proximo = btn.getAttribute('data-proximo');
+        document.querySelectorAll('.etapa').forEach(div => div.classList.remove('ativa'));
+        document.getElementById(proximo).classList.add('ativa');
+      }
+    });
+  </script>
+
+</body>
+</html>
